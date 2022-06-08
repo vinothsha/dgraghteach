@@ -33,3 +33,22 @@ Mutation with RDF Triple v/s JSON
     <_:node1> <edgeName> <_:node2>(<predicate>=<value>) .
 *Adding Facets on the edge using JSON:
     {"uid":"node1","edgeName":{"uid":"node2","edgeName|predicate":"value"}}
+
+
+{
+    set{
+        <_:admin> <name> "company" .
+        <_:e1> <name> "employee1" .
+        <_:e1> <department> "engineering" .
+        <_:e1> <designation> "Lead consultant" .
+        <_:e1> <joiningDate> "2016-01-01" .
+        <_:e1> <reportingto> <_:admin> (from=2016-01-01,current=true) .
+
+        <_:e2> <name> "employee1" .
+        <_:e2> <department> "engineering" .
+        <_:e2> <designation> "Sr. Software consultant" .
+        <_:e2> <joiningDate> "2016-01-01" .
+        <_:e2> <reportingto> <_:e1> (from=2016-01-01,end=2018-01-01,current=false) .
+        <_:e2> <reportingto> <_:admin> (from=2018-01-01,current=true) .
+    }
+}

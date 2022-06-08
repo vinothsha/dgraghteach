@@ -160,3 +160,103 @@ read.book
 }
 }
 
+mutate
+
+{
+  "set":[
+	{
+	"name":"sha",
+  "age":41,
+  "follows":[
+	{
+	"name":"billa",
+  "age":28,
+  "follows":[
+	{
+	"name":"jilla",
+  "age":31
+}
+]
+}
+]
+}
+]
+}
+
+query
+{
+q(func:uid(0x21)){
+  uid
+	name
+  age
+  follows{
+	name
+    age
+    follow{
+			name
+     
+      age
+    }
+  }
+}
+}
+
+update in Dgraph
+
+{
+  "set":[
+	{
+  "uid":"0x21",
+	"name":"update or change",
+  "age":20
+}
+]
+}
+
+Add new feild in dgraph
+
+{
+  "set":[
+	{
+  "uid":"0x21",
+	"country":"India"
+}
+]
+}
+
+add following to other node 
+
+{
+	"set":[
+	{
+	"uid":"0x20",
+  "follows":[
+			{
+			"uid":"0x20"
+}
+]
+}
+]
+}
+
+Recurse Query in Dgraph
+
+*)Recurse queries let you traverse a set of predicates (with filter, facets, etc.) 
+    until we reach all leaf nodes or we reach the maximum depth which is specified by the depth parameter.
+
+*)You can specify only one level of predicates after root. 
+    These would be traversed recursively. Both scalar and entity-nodes are treated similarly.
+
+*)Only one recurse block is advised per query.
+
+*)Be careful as the result size could explode quickly and an error would be returned if the result set gets too large.
+    In such cases use more filters, limit results using pagination, or provide a depth parameter at root as shown in the example above.
+
+*)The loop parameter can be set to false, in which case paths which lead to a loop would be ignored while traversing.
+
+*)If not specified, the value of the loop parameter defaults to false.
+
+*)If the value of the loop parameter is false and depth is not specified, 
+    depth will default to math.MaxUint64, which means that the entire graph might be traversed until all the leaf nodes are reached.
+
+https://github.com/dgraph-io/dgraph#dgraph-compared-to-other-graph-dbs
