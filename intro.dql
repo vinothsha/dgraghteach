@@ -10,3 +10,26 @@
     *Facets--are attributes over the edge in Dgraph.Facets can also be used as weights for edges.
 
     *Note--Facets are however not first class citizen in Dgraph like predicates.
+
+    RDF.Resource Description Framework (RDF)
+
+
+An RDF file is a document written in the Resource Description Framework (RDF) language, 
+which is used to represent information about resources on the web. 
+It contains information about a website in a structured format called metadata. 
+RDF files may include a site map, an updates log, page descriptions, and keywords.
+
+Mutation with RDF Triple v/s JSON
+
+*Adding predicate/property to a node /entity using RDF:
+    <_:node> <predicate> <value> .
+*Adding predicate/property to a node /entity using JSON:
+    {"uid":"node","predicate":"values"}
+*Connecting nodes/entities with edge using RDF:
+    <_:node1> <edgeName> <_:node2> .
+*connecting nodes.entities with edge using JSON:
+    {"uid":"node1","edgeName":{"uid":"node2"}}
+*Adding Facets on the edge using RDF:
+    <_:node1> <edgeName> <_:node2>(<predicate>=<value>) .
+*Adding Facets on the edge using JSON:
+    {"uid":"node1","edgeName":{"uid":"node2","edgeName|predicate":"value"}}
