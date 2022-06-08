@@ -1,0 +1,93 @@
+mutate
+
+{
+  "set": [
+    {
+      "food_name": "Hamburger",
+      "review": [
+        {
+          "comment": "Tastes very good"
+        }
+      ],
+      "origin": [
+        {
+          "country": "United states of America"
+        }
+      ]
+    },
+    {
+      "food_name": "Carrillada",
+      "review": [
+        {
+          "comment": "Sabe muy sabroso"
+        }
+      ],
+      "origin": [
+        {
+          "country": "Spain"
+        }
+      ]
+    },
+    {
+      "food_name": "Pav Bhaji",
+      "review": [
+        {
+          "comment": "स्वाद बहुत अच्छा है"
+        }
+      ],
+      "origin": [
+        {
+          "country": "India"
+        }
+      ]
+    },
+    {
+      "food_name": "Borscht",
+      "review": [
+        {
+          "comment": "очень вкусно"
+        }
+      ],
+      "origin": [
+        {
+          "country": "Russia"
+        }
+      ]
+    },
+    {
+      "food_name": "mapo tofu",
+      "review": [
+        {
+          "comment": "真好吃"
+        }
+      ],
+      "origin": [
+        {
+          "country": "China"
+        }
+      ]
+    }
+  ]
+}
+query
+{
+  food_review(func: has(food_name)) {
+    food_name
+      review {
+        comment
+      }
+      origin {
+        country
+      }
+  }
+}
+
+query
+{
+  food_review(func: has(food_name)) {
+    food_name
+      review {
+        comment
+      }
+  }
+}

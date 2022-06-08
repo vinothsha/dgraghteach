@@ -1,0 +1,2 @@
+sudo docker run --rm -itd -p 8080:8080 -p 9080:9080 dgraph/standalone 
+sudo docker run --rm -itd -p 8000:8000 dgraph/ratel

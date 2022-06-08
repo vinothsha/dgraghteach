@@ -1,0 +1,162 @@
+{
+    myfunc(func:has(type)){
+        field1
+        field2
+        field3{
+            subfield1
+            subfield2
+        }
+    }
+}
+passno-N0416557 
+node in dgraph 64 bit integer unsigned
+
+
+mutate
+{
+    set{
+        _:node1 <name> "Vinothsha" .
+        _:node1 <age> "37" . 
+    }
+}
+<name>--canonical form
+query
+{
+    fetch(func:eq(name,"Vinothsha")){
+        uid
+        name
+        age
+    }
+}--error
+
+{
+    fetch(func:eq(name,"Vinothsha")){
+        uid
+        name
+        age
+    }
+}
+
+mutate
+
+{
+    set{
+        _:node1 <name> "kota" .
+        _:node1 <age> "1000" .
+    }
+}
+
+query
+{
+    fetch(func:has(name)){
+        uid
+        name
+        age
+    }
+}
+
+mutate
+{
+    set{
+        <0x5><livestream><0x7>.
+    }
+}
+
+query
+{
+myfunc(func:has(<livestream>)){
+	uid
+  name
+  livestream
+  age
+}
+}
+
+query
+{
+myfunc(func:has(<livestream>)){
+	uid
+  name
+  livestream{
+		uid
+    name
+    age
+  }
+  age
+}
+}
+
+mutate
+
+{
+    set{
+        <0x5> <read> "richdad" .
+    }
+}
+
+
+DATA TYPE	 AVAILABLE INDEX TYPES
+int	            int
+float	        float
+string	        hash, exact, term, fulltext, trigram
+bool	        bool
+geo	            geo
+dateTime	    year, month, day, hour
+
+
+schema
+
+<age>: int @index(int) .
+<book.name>: string @index(hash) .
+<dgraph.drop.op>: string .
+<dgraph.graphql.p_query>: string @index(sha256) .
+<dgraph.graphql.schema>: string .
+<dgraph.graphql.xid>: string @index(exact) @upsert .
+<livestream>: [uid] .
+<name>: string @index(exact) .
+<read>: [uid] .
+type <book> {
+	book.name
+}
+type <dgraph.graphql> {
+	dgraph.graphql.schema
+	dgraph.graphql.xid
+}
+type <dgraph.graphql.persisted_query> {
+	dgraph.graphql.p_query
+}
+type <person> {
+	name
+	age
+	read
+	livestream
+}
+
+
+mutate
+
+{
+    set{
+      _:node1 <book.name> "Dune" .
+      _:node2 <book.name> "Three Body Problem" .
+      <0x5> <read> _:node1 .
+      <0x5> <read> _:node2 .
+    }
+}
+
+query
+{
+myfunc(func:eq(name,"Vinothsha")){
+	uid
+  name
+  age
+  read{
+		book.name
+  }
+  livestream{
+	name
+  }
+read.book
+}
+}
+

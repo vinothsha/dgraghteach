@@ -1,0 +1,12 @@
+            Edges and Facets
+    *A graph is comprised of nodes and edges. A node is useless by itself and 
+    a graph only makes sense when there are a collection of nodes with edges connection them.
+    
+    * Edges-- is a property which connects nodes/entities.
+
+    * Reverse Edges--the graph edges are unidirectional,but sometimes modeling requires reverse edges,
+    which is specified in the schema using @reverse. the reverse edge of anEdge is ~anEdge.
+
+    *Facets--are attributes over the edge in Dgraph.Facets can also be used as weights for edges.
+
+    *Note--Facets are however not first class citizen in Dgraph like predicates.

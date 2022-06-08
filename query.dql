@@ -1,0 +1,9 @@
+Query API endpoint to get balance information for a user whosw name is "Alice" or "Bob".
+
+curl -X POST localhost:8080/query -d $'{
+    balance(func:anyofterms(name,"Alice Bob")){
+        uid
+        name
+        balance
+    }
+}' | jq

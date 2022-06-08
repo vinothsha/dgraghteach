@@ -1,0 +1,13 @@
+communication of your application through Grpc.
+
+this library supports two styles of clients,
+
+    * synchronous client DgraphClient
+    * async client DgraphAsyncClient
+
+Transaction 
+    *read-only Transactions
+    * the Transaction that change data in dgraph with mutate operations
+    Transaction txn=dgraphClient.newReadOnlyTransaction();
+    Transaction txn-dgraphClient.newTransaction();
+

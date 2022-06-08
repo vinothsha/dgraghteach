@@ -1,0 +1,4 @@
+alter API endpoint to add the schema.
+
+curl -X POST localhost:8080/alter -d 'name:string @index(term) .'
+

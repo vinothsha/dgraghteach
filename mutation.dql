@@ -1,0 +1,8 @@
+Mutation API endpoint to add the balance information of two user.
+
+curl -X POST localhost:8080/mutate/4 -d $'{
+    set{
+        <0x1> <balance> "110" .
+        <0x2> <balance> "60"  .
+    }
+}' | jq
